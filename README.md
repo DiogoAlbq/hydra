@@ -6,7 +6,7 @@ HydraChain is a high-performance, dynamic proxy orchestrator written in Rust. It
 
 ## 🚀 Guia de Instalação (Installation Guide)
 
-Siga os passos abaixo para preparar seu ambiente e compilar o HydraChain do zero.
+Siga os passos abaixo para preparar seu ambiente e compilar o HydraChain do zero. **Não é necessário login ou autenticação para clonar o repositório público.**
 
 ### 1. Dependências do Sistema (System Dependencies)
 
@@ -35,7 +35,7 @@ sudo dnf install -y pkg-config openssl-devel git curl
 Independentemente da sua distro, recomendamos o uso do `rustup` para gerenciar a versão do Rust.
 
 ```bash
-# Baixe e instale o Rustup
+# Baixe e instale o Rustup (Instalação anônima e segura)
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # Configure o ambiente no shell atual
@@ -47,13 +47,13 @@ rustc --version
 
 ---
 
-### 3. Clonando o Projeto (Cloning the Project)
+### 3. Clonando o Projeto (Public Git Clone)
 
-Agora, obtenha o código fonte do HydraChain via Git.
+Obtenha o código fonte do HydraChain diretamente via HTTPS (sem necessidade de chaves SSH ou tokens).
 
 ```bash
-# Clone o repositório
-git clone https://github.com/youruser/hydrachain.git
+# Clone o repositório público
+git clone https://github.com/project-hydra/hydrachain.git
 
 # Entre no diretório
 cd hydrachain
@@ -76,7 +76,7 @@ cargo build --release
 Antes de rodar, prepare o arquivo de configuração e certifique-se de que o ProxyChains está instalado.
 
 ```bash
-# Crie o diretório de configuração
+# Crie o diretório de configuração local
 mkdir -p ~/.config/hydrachain
 
 # Copie o exemplo de configuração
