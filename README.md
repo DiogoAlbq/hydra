@@ -1,95 +1,114 @@
 # 🐍 HydraChain: The Ultimate ProxyChains Orchestrator
 
-HydraChain é um orquestrador de proxies dinâmico de alta performance escrito em Rust. Ele gerencia listas de proxies (HTTP, SOCKS4, SOCKS5), valida-os em tempo real e atualiza automaticamente o `proxychains.conf`.
+HydraChain is a high-performance, dynamic proxy orchestrator written in Rust. It manages free proxy lists (HTTP, SOCKS4, SOCKS5), validates them in real-time, and automatically updates your `proxychains.conf` to ensure maximum uptime and anonymity.
 
 ---
 
 ## 🚀 Guia de Instalação (Installation Guide)
 
-Siga os passos abaixo para preparar seu ambiente. 
+Siga os passos abaixo para preparar seu ambiente e compilar o HydraChain do zero.
 
-> **Nota sobre o Git:** O erro "Authentication failed" ocorre porque a URL `github.com/project-hydra/hydrachain.git` é um placeholder. Se você está criando o projeto agora, siga o fluxo de **Inicialização Local** abaixo.
+### 1. Dependências do Sistema (System Dependencies)
 
-### 1. Dependências do Sistema
+O HydraChain requer o compilador Rust e bibliotecas de desenvolvimento de rede.
 
 #### **Debian / Ubuntu / Kali Linux**
 ```bash
+# Atualize os repositórios
 sudo apt update
+
+# Instale as ferramentas de compilação e dependências de rede
 sudo apt install -y build-essential pkg-config libssl-dev git curl
 ```
 
-#### **Fedora / Bazzite / RHEL**
+#### **Fedora / RHEL / CentOS**
 ```bash
+# Instale o grupo de ferramentas de desenvolvimento e dependências
 sudo dnf groupinstall "Development Tools"
 sudo dnf install -y pkg-config openssl-devel git curl
 ```
 
 ---
 
-### 2. Instalando o Rust
+### 2. Instalando o Rust (Installing Rust Toolchain)
+
+Independentemente da sua distro, recomendamos o uso do `rustup` para gerenciar a versão do Rust.
 
 ```bash
+# Baixe e instale o Rustup
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# Configure o ambiente no shell atual
 source $HOME/.cargo/env
+
+# Verifique a instalação
+rustc --version
 ```
 
 ---
 
-### 3. Inicializando o Projeto Localmente
+### 3. Clonando o Projeto (Cloning the Project)
 
-Como este é um novo projeto desenvolvido por você, em vez de clonar um repositório inexistente, crie a estrutura manualmente:
+Agora, obtenha o código fonte do HydraChain via Git.
 
 ```bash
-# 1. Crie a pasta do projeto
-mkdir hydrachain && cd hydrachain
+# Clone o repositório
+git clone https://github.com/youruser/hydrachain.git
 
-# 2. Inicie um novo repositório Git local
-git init
-
-# 3. Crie um novo projeto Rust
-cargo init
-
-# 4. (Opcional) Adicione seu repositório remoto real depois de criá-lo no GitHub
-# git remote add origin https://github.com/SEU_USUARIO/hydrachain.git
+# Entre no diretório
+cd hydrachain
 ```
 
 ---
 
-### 4. Configuração e Compilação
+### 4. Compilação e Produto Final (Build & Deployment)
 
-Adicione as dependências ao seu `Cargo.toml`:
-
-```toml
-[dependencies]
-tokio = { version = "1", features = ["full"] }
-reqwest = { version = "0.11", features = ["socks"] }
-serde = { version = "1.0", features = ["derive"] }
-serde_yaml = "0.9"
-clap = { version = "4.0", features = ["derive"] }
-tracing = "0.1"
-anyhow = "1.0"
-```
-
-Compile o binário:
+Compile o binário otimizado para produção.
 
 ```bash
+# Compilar em modo Release (máxima performance)
 cargo build --release
+
+# O binário final será gerado em: target/release/hydrachain
 ```
 
-O binário final estará em `target/release/hydrachain`.
+#### **Configuração Inicial**
+Antes de rodar, prepare o arquivo de configuração e certifique-se de que o ProxyChains está instalado.
+
+```bash
+# Crie o diretório de configuração
+mkdir -p ~/.config/hydrachain
+
+# Copie o exemplo de configuração
+cp config.example.yml ~/.config/hydrachain/config.yml
+
+# (Opcional) Mova o binário para o seu PATH para acesso global
+sudo cp target/release/hydrachain /usr/local/bin/
+```
 
 ---
 
-### 5. Por que o erro de autenticação ocorreu?
+### 5. Execução (Usage)
 
-O Git solicita usuário e senha (ou Token) quando:
-1. O repositório é **privado**.
-2. O repositório **não existe** (o GitHub assume que pode ser um repo privado que você não tem acesso).
-3. **Senhas não são mais aceitas**: O GitHub exige **Personal Access Tokens (PAT)** em vez de senhas comuns para operações via HTTPS.
+Inicie a Hydra e deixe-a orquestrar seus proxies:
 
-**Solução:** Sempre use `git init` para projetos novos locais ou use um PAT se for clonar um repositório privado seu.
+```bash
+# Rodar o assistente de diagnóstico inicial
+hydrachain doctor
+
+# Iniciar o daemon de atualização dinâmica
+hydrachain update --daemon
+```
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+- **Rust 2021 Edition**
+- **Tokio** (Runtime assíncrono para alta concorrência)
+- **Reqwest** (Validação de proxies com suporte a SOCKS)
+- **Serde** (Gerenciamento de configurações YAML)
 
 ---
 
 ## 🛡️ Aviso Legal
-Esta ferramenta foi criada para fins educacionais. O uso indevido é de total responsabilidade do usuário. *Cut one proxy, three more replace it.*
+Esta ferramenta foi criada para fins educacionais e de pesquisa em segurança. O uso indevido para atividades ilegais é de total responsabilidade do usuário. *Cut one proxy, three more replace it.*
