@@ -1,5 +1,5 @@
 {
-  "name": "HydraChain Desktop",
-  "description": "High-performance Rust-backed ProxyChains orchestrator. Cross-platform desktop application bundled as .AppImage.",
+  "name": "HydraChain - Orchestrator Dashboard",
+  "description": "Advanced real-time dashboard and orchestration console for the HydraChain dynamic proxy system.",
   "requestFramePermissions": []
 }
