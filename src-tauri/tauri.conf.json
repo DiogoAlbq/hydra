@@ -1,0 +1,67 @@
+
+{
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "beforeBuildCommand": "npm run build",
+    "distDir": "../dist",
+    "devPath": "http://localhost:1420",
+    "withGlobalTauri": true
+  },
+  "package": {
+    "productName": "HydraChain",
+    "version": "0.1.0"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "shell": {
+        "all": true,
+        "execute": true,
+        "sidecar": false,
+        "open": true
+      },
+      "window": {
+        "all": true
+      },
+      "process": {
+        "all": true,
+        "relaunch": true
+      },
+      "path": {
+        "all": true
+      }
+    },
+    "bundle": {
+      "active": true,
+      "targets": ["appimage", "deb"],
+      "identifier": "com.hydrachain.app",
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ],
+      "resources": [],
+      "externalBin": [],
+      "copyright": "Copyright © 2025 Senior Engineer",
+      "category": "Network",
+      "shortDescription": "Dynamic Proxy Orchestrator",
+      "longDescription": "High-performance Rust daemon for ProxyChains management."
+    },
+    "security": {
+      "csp": null
+    },
+    "window": [
+      {
+        "fullscreen": false,
+        "resizable": true,
+        "title": "HydraChain Console",
+        "width": 1280,
+        "height": 800,
+        "decorations": true,
+        "transparent": false
+      }
+    ]
+  }
+}
