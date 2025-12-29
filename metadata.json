@@ -1,0 +1,5 @@
+{
+  "name": "Copy of HydraChain - The Ultimate ProxyChains Orchestrator",
+  "description": "A high-performance management console for the HydraChain Rust orchestrator, featuring real-time proxy validation, scoring, and lifecycle management.",
+  "requestFramePermissions": []
+}
